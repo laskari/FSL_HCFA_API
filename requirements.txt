@@ -1,0 +1,16 @@
+# Model
+torch==2.1.0 
+torchvision==0.16.0
+pandas==2.1.1
+transformers==4.34.1
+# --index-url https://download.pytorch.org/whl/cu121
+
+# Classifier
+fastai==2.7.14
+
+# API
+fastapi==0.99.1
+uvicorn==0.22.0
+python-dotenv==1.0.0
+python-multipart==0.0.6
+openpyxl==3.1.2
