@@ -1,0 +1,116 @@
+{
+    "categories": [
+        {
+            "id": 1,
+            "name": "1_class"
+        },
+        {
+            "id": 2,
+            "name": "2_class"
+        },
+        {
+            "id": 3,
+            "name": "3_class"
+        },
+        {
+            "id": 4,
+            "name": "5_class"
+        },
+        {
+            "id": 5,
+            "name": "4_class"
+        },
+        {
+            "id": 6,
+            "name": "7_class"
+        },
+        {
+            "id": 7,
+            "name": "9_class"
+        },
+        {
+            "id": 8,
+            "name": "10_class"
+        },
+        {
+            "id": 9,
+            "name": "11_class"
+        },
+        {
+            "id": 10,
+            "name": "12_class"
+        },
+        {
+            "id": 11,
+            "name": "13_class"
+        },
+        {
+            "id": 12,
+            "name": "14_class"
+        },
+        {
+            "id": 13,
+            "name": "15_class"
+        },
+        {
+            "id": 14,
+            "name": "17_class"
+        },
+        {
+            "id": 15,
+            "name": "21_class"
+        },
+        {
+            "id": 16,
+            "name": "22_class"
+        },
+        {
+            "id": 17,
+            "name": "23_class"
+        },
+        {
+            "id": 18,
+            "name": "24_class"
+        },
+        {
+            "id": 19,
+            "name": "25_class"
+        },
+        {
+            "id": 20,
+            "name": "26_class"
+        },
+        {
+            "id": 21,
+            "name": "28_class"
+        },
+        {
+            "id": 22,
+            "name": "31_class"
+        },
+        {
+            "id": 23,
+            "name": "32_class"
+        },
+        {
+            "id": 24,
+            "name": "33_class"
+        },
+        {
+            "id": 25,
+            "name": "6_class"
+        },
+        {
+            "id": 26,
+            "name": "8_class"
+        },
+        {
+            "id": 27,
+            "name": "27_class"
+        },
+        {
+            "id": 28,
+            "name": "19_class"
+        }
+    ]
+}
