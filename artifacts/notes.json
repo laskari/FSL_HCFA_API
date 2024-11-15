@@ -1,0 +1,237 @@
+{
+  "categories": [
+    {
+      "id": 0,
+      "name": "10. IS PATIENT\u2019S CONDITION RELATED TO:"
+    },
+    {
+      "id": 1,
+      "name": "10D_Claim_Codes"
+    },
+    {
+      "id": 2,
+      "name": "11. INSURED\u2019S POLICY GROUP OR FECA NUMBER"
+    },
+    {
+      "id": 3,
+      "name": "11. d. IS THERE ANOTHER HEALTH BENEFIT PLAN?"
+    },
+    {
+      "id": 4,
+      "name": "11A_Ins_DOB"
+    },
+    {
+      "id": 5,
+      "name": "11B_Other_Claim_Id"
+    },
+    {
+      "id": 6,
+      "name": "11C_Ins_Plan_Name"
+    },
+    {
+      "id": 7,
+      "name": "12_Patient_Auth_Sign"
+    },
+    {
+      "id": 8,
+      "name": "13. INSURED\u2019S OR AUTHORIZED PERSON\u2019S SIGNATURE"
+    },
+    {
+      "id": 9,
+      "name": "14. DATE OF CURRENT"
+    },
+    {
+      "id": 10,
+      "name": "15_Other_Date"
+    },
+    {
+      "id": 11,
+      "name": "16_Date"
+    },
+    {
+      "id": 12,
+      "name": "17. NAME OF REFERRING PHYSICIAN OR OTHER SOURCE"
+    },
+    {
+      "id": 13,
+      "name": "17a. Qual"
+    },
+    {
+      "id": 14,
+      "name": "17b. NPI"
+    },
+    {
+      "id": 15,
+      "name": "19. Additional Claim Information"
+    },
+    {
+      "id": 16,
+      "name": "19_Hospitalization_Date"
+    },
+    {
+      "id": 17,
+      "name": "1_InsType"
+    },
+    {
+      "id": 18,
+      "name": "1a. INSURED\u2019S I.D. NUMBER"
+    },
+    {
+      "id": 19,
+      "name": "2. PATIENT\u2019S NAME (Last Name, First Name, Middle Initial)"
+    },
+    {
+      "id": 20,
+      "name": "20_Outside_Lab"
+    },
+    {
+      "id": 21,
+      "name": "21. DIAGNOSIS OR NATURE OF ILLNESS OR INJURY."
+    },
+    {
+      "id": 22,
+      "name": "22. MEDICAID RESUBMISSION CODE and Original Ref No"
+    },
+    {
+      "id": 23,
+      "name": "23. PRIOR AUTHORIZATION NUMBER"
+    },
+    {
+      "id": 24,
+      "name": "24. Table"
+    },
+    {
+      "id": 25,
+      "name": "25. FEDERAL TAX I.D. NUMBER_SSN_EIN"
+    },
+    {
+      "id": 26,
+      "name": "26. PATIENT\u2019S ACCOUNT NO."
+    },
+    {
+      "id": 27,
+      "name": "27. ACCEPT ASSIGNMENT?"
+    },
+    {
+      "id": 28,
+      "name": "28. TOTAL CHARGE"
+    },
+    {
+      "id": 29,
+      "name": "29. AMOUNT PAID"
+    },
+    {
+      "id": 30,
+      "name": "3. PATIENT\u2019S BIRTH DATE"
+    },
+    {
+      "id": 31,
+      "name": "30_Reserved_NUCC"
+    },
+    {
+      "id": 32,
+      "name": "31. SIGNATURE OF PHYSICIAN OR SUPPLIER  INCLUDING DEGREES OR CREDENTIALS"
+    },
+    {
+      "id": 33,
+      "name": "32. SERVICE FACILITY LOCATION INFORMATION"
+    },
+    {
+      "id": 34,
+      "name": "32A_NPI_Code"
+    },
+    {
+      "id": 35,
+      "name": "32B_Code"
+    },
+    {
+      "id": 36,
+      "name": "33. PHYSICIAN\u2019S, SUPPLIER\u2019S BILLING NAME, ADDRESS"
+    },
+    {
+      "id": 37,
+      "name": "33. PHYSICIAN\u2019S, SUPPLIER\u2019S FullID"
+    },
+    {
+      "id": 38,
+      "name": "33. PHYSICIAN\u2019S, SUPPLIER\u2019S NPI"
+    },
+    {
+      "id": 39,
+      "name": "4. INSURED\u2019S NAME (Last Name, First Name, Middle Initial)"
+    },
+    {
+      "id": 40,
+      "name": "5. PATIENT\u2019S ADDRESS (No., Street)"
+    },
+    {
+      "id": 41,
+      "name": "5. Pat_CITY"
+    },
+    {
+      "id": 42,
+      "name": "5. Pat_STATE"
+    },
+    {
+      "id": 43,
+      "name": "5. Pat_ZIP CODE"
+    },
+    {
+      "id": 44,
+      "name": "5_Telephone"
+    },
+    {
+      "id": 45,
+      "name": "6. PATIENT RELATIONSHIP TO INSURED"
+    },
+    {
+      "id": 46,
+      "name": "7. INSURED\u2019S ADDRESS (No., Street)"
+    },
+    {
+      "id": 47,
+      "name": "7. Insurer_CITY"
+    },
+    {
+      "id": 48,
+      "name": "7. Insurer_STATE"
+    },
+    {
+      "id": 49,
+      "name": "7. Insurer_ZIP CODE"
+    },
+    {
+      "id": 50,
+      "name": "7_Telephone"
+    },
+    {
+      "id": 51,
+      "name": "8_Reserved_NUCC"
+    },
+    {
+      "id": 52,
+      "name": "9. a. OTHER INSURED\u2019S POLICY OR GROUP NUMBER"
+    },
+    {
+      "id": 53,
+      "name": "9. d. INSURANCE PLAN NAME OR PROGRAM NAME"
+    },
+    {
+      "id": 54,
+      "name": "9B_Reserved_NUCC"
+    },
+    {
+      "id": 55,
+      "name": "9C_Reserved_NUCC"
+    },
+    {
+      "id": 56,
+      "name": "9_Other_InsName"
+    }
+  ],
+  "info": {
+    "year": 2024,
+    "version": "1.0",
+    "contributor": "Label Studio"
+  }
+}
