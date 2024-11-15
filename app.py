@@ -68,5 +68,5 @@ async def ml_extraction(data: dict):
         )
 
 if __name__ == '__main__':
-    uvicorn.run("app:app", host="0.0.0.0", port=8000)
+    uvicorn.run("app:app", host="10.115.58.138", port=8000)
 
