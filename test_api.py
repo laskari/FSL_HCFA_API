@@ -2,7 +2,7 @@ import requests
 import time
 
 # Define the URL of the API endpoint
-url = "http://localhost:8000/hcfa_extraction"
+url = "http://10.115.58.138:8000/hcfa_extraction"
 
 # Define the payload data as a dictionary
 data = {
