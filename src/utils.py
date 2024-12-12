@@ -2,6 +2,7 @@ import pandas as pd
 
 import os
 from datetime import datetime
+from collections import defaultdict
 
 def merge_donut_outputs(donut_out_old, donut_out_new, keys_from_old):
     """
@@ -29,6 +30,27 @@ def merge_donut_outputs(donut_out_old, donut_out_new, keys_from_old):
     # Return the combined DataFrame with updated values
     return donut_out_new[['Key', 'Value']]
 
+def merge_key_aggregated_scores(scores_old, scores_new, keys_from_old):
+    """
+    Merges two key aggregated scores dictionaries, updating values for specified keys from the old scores.
+
+    Parameters:
+    scores_old (defaultdict(float)): The old key aggregated scores.
+    scores_new (defaultdict(float)): The new key aggregated scores.
+    keys_from_old (list): A list of keys to retain values from the old scores.
+
+    Returns:
+    defaultdict(float): Merged key aggregated scores.
+    """
+    # Create a copy of the new scores to avoid modifying the original
+    merged_scores = defaultdict(float, scores_new)
+    
+    # Update values for specified keys from the old scores
+    for key in keys_from_old:
+        if key in scores_old:
+            merged_scores[key] = scores_old[key]
+
+    return merged_scores
 
 def add_missing_keys(donut_out_old: pd.DataFrame, key_mapping: pd.DataFrame) -> pd.DataFrame:
 
