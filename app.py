@@ -6,7 +6,7 @@ from typing import Annotated, Optional, List
 
 from fastapi import FastAPI, File, UploadFile, Form
 import torch
-import json, os
+import json, os, sys
 
 # from extraction_util import run_hcfa_pipeline
 from src.pipeline import run_final_hcfa_pipeline
@@ -68,5 +68,6 @@ async def ml_extraction(data: dict):
         )
 
 if __name__ == '__main__':
+    port = int(sys.argv[1]) if len(sys.argv) > 1 else 8000
     uvicorn.run("app:app", host="0.0.0.0", port=8000)
 
