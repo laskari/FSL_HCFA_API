@@ -54,7 +54,7 @@ async def ml_extraction(data: dict):
         log_message(logger, "Pipeline ran successfully", level="INFO")
 
         # If there's no error, return the result with file path
-        response_data = {"file_path": data.get('FilePath'), "result": result['result']}
+        response_data = {"version" : VERSION, "file_path": data.get('FilePath'), "result": result['result']}
         
         # Log the successful result
         log_message(logger, f"Extraction result: {response_data}", level="INFO")

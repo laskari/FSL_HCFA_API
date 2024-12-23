@@ -411,7 +411,8 @@ def run_hcfa_pipeline(image_path: str):
 
         key_aggregated_scores_old = calculate_key_aggregated_scores(scores_old, output_old, processor_1)
 
-        from src.utils import merge_donut_outputs, add_missing_keys, merge_key_aggregated_scores
+        from src.utils import merge_donut_outputs, add_missing_keys, merge_key_aggregated_scores,\
+                                post_process
         
         ###### CHECK IF ANY KEY MISSING ######
         donut_out_old = add_missing_keys(donut_out_old, key_mapping)
@@ -494,6 +495,10 @@ def run_hcfa_pipeline(image_path: str):
         result_dict_1 = map_result1(output_dict_det, BBOX_HCFA_DONUT_Mapping_Dict)
         # result_dict_2 = map_result2(output_dict_det, BBOX_DONUT_Mapping_Dict)
         final_mapping_dict  = map_result1_final_output(result_dict_1, output_dict_donut, key_aggregated_scores)
+
+        #### Apply Post processing ####
+        final_mapping_dict = post_process(final_mapping_dict)
+        
         print(f"Length of Final Mapping Dict {final_mapping_dict}")
         return {"result": final_mapping_dict}, None
     except Exception as e:

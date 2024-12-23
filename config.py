@@ -1,11 +1,12 @@
 import os
+
+VERSION = "hcfa_v1.1"
 ROOT = os.getcwd()
 LOG_DIR = "logs"
-LOG_FILE = "hcfa_logs.txt"
+LOG_FILE = "hcfa_logs.log"
 artifacts = 'artifacts'
 LOGFILE_DIR = os.path.join(ROOT, LOG_DIR, LOG_FILE)
 IMAGE_CLASSIFIER = os.path.join(ROOT, artifacts,"HCFA_Classifier.pkl")
-
 ################# HCFA RD CONFIG ########################3
 
 RD_CATEGORY_MAPPING_PATH = os.path.join(ROOT, artifacts,"hcfa_rd_notes_grouped_v2.json")
@@ -15,7 +16,7 @@ HCFA_AVERAGE_COORDINATE_PATH = os.path.join(ROOT, artifacts,"average_coordinates
 CATEGORY_MAPPING_PATH = os.path.join(ROOT, artifacts,"notes.json")
 MODEL_PATH = os.path.join(ROOT, artifacts, "hcfa__94.pth")
 
-print(IMAGE_CLASSIFIER)
+# print(IMAGE_CLASSIFIER)
 
 KEYS_FROM_OLD = ["29_AmountPaid", "33_BillProvPhone", "11D_PriInsOtherPlanN", "22_MedicaidCode", \
                      "11D_PriInsOtherPlanY", "22_MedicaidRefNum", "24C_EMG", "19_LocalUse", "30_BalanceDue"]

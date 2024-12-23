@@ -98,3 +98,14 @@ def log_message(log_file: str, message: str):
     # Open the file in append mode and write the message
     with open(log_file, 'a') as f:
         f.write(f"[{timestamp}] {message}\n")
+
+def post_process(final_mapping_dict):
+    try:
+        if '12_PatSignonFile' in final_mapping_dict:
+            print("Applied post processing for key 12_PatSignonFile")
+            patsign_on_file = final_mapping_dict['12_PatSignonFile']
+            if patsign_on_file['text'][0]['value'] == 'BLANK':
+                patsign_on_file['text'][0]['value'] = '[BLANK]'
+    except Exception as e:
+        print(f"Error while post processing: {e}")
+    return final_mapping_dict
