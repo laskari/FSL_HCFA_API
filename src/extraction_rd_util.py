@@ -109,7 +109,9 @@ class HCFARDRoiPredictor:
 
         class_names = [self.category_mapping[label_id] for label_id in labels_flat]
         num_predictions = len(boxes_flat)
-        file_name = [image_path.split(".")[0]] * num_predictions
+        # file_name = [image_path.split(".")[0]] * num_predictions
+        file_name = [image_path] * num_predictions
+
 
         infer_df = pd.DataFrame({
             'file_name': file_name,
@@ -367,7 +369,7 @@ def map_result1_final_output(result_dict_1, additional_info_dict, key_aggregated
 # Load the models
 processor_1, model_1, processor_2, model_2 = load_model(device)
 
-def run_hcfa_rd_pipeline(image_path: str):
+def run_hcfa_rd_pipeline(content, image_path: str):
     try:
         global_start_time = time.time()
         log_message(logger, "Starting HCFA RD pipeline", level="INFO")
@@ -377,7 +379,8 @@ def run_hcfa_rd_pipeline(image_path: str):
 
         print("got the image")
         # Load and convert the image
-        pil_image = Image.open(image_path).convert('RGB')
+        # pil_image = Image.open(image_path).convert('RGB')
+        pil_image = Image.open(io.BytesIO(content)).convert('RGB')
         image_height, image_width = pil_image.size[0], pil_image.size[1]
         to_tensor = transforms.ToTensor()
         image = to_tensor(pil_image)

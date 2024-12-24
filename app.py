@@ -25,26 +25,31 @@ async def root_route():
     return "Application working"
 
 @app.post("/hcfa_extraction")
-async def ml_extraction(data: dict):
+async def ml_extraction(file: UploadFile = File(...)):
     try:
         # Log start of the extraction
         log_message(logger, "Started ml_extraction", level="INFO")
+        # Read the contents of the uploaded file
+        contents = await file.read()
+
+        # Get file name
+        file_name = file.filename
 
         # Get the image path from the payload
-        image_file_path = data.get('FilePath')
+        # image_file_path = data.get('FilePath')
 
-        if not image_file_path:
-            log_message(logger, "FilePath field is required", level="ERROR")
-            raise HTTPException(status_code=400, detail="FilePath field is required")
+        # if not image_file_path:
+        #     log_message(logger, "FilePath field is required", level="ERROR")
+        #     raise HTTPException(status_code=400, detail="FilePath field is required")
 
-        if not os.path.exists(image_file_path):
-            log_message(logger, f"File not found: {image_file_path}", level="ERROR")
-            raise HTTPException(status_code=400, detail=f"File not found: {image_file_path}")
+        # if not os.path.exists(image_file_path):
+        #     log_message(logger, f"File not found: {image_file_path}", level="ERROR")
+        #     raise HTTPException(status_code=400, detail=f"File not found: {image_file_path}")
 
-        log_message(logger, f"File found: {image_file_path}. Running pipeline...", level="INFO")
+        # log_message(logger, f"File found: {image_file_path}. Running pipeline...", level="INFO")
 
         # Run the pipeline and capture result and error
-        result, error = run_final_hcfa_pipeline(image_file_path)
+        result, error = run_final_hcfa_pipeline(contents, file_name)
 
         if error:
             # Log the error before raising HTTPException
@@ -54,7 +59,7 @@ async def ml_extraction(data: dict):
         log_message(logger, "Pipeline ran successfully", level="INFO")
 
         # If there's no error, return the result with file path
-        response_data = {"version" : VERSION, "file_path": data.get('FilePath'), "result": result['result']}
+        response_data = {"version" : VERSION, "file_name": file_name, "result": result['result']}
         
         # Log the successful result
         log_message(logger, f"Extraction result: {response_data}", level="INFO")

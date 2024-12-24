@@ -118,8 +118,8 @@ class HCFARoiPredictor:
 
         class_names = [self.category_mapping[label_id] for label_id in labels_flat]
         num_predictions = len(boxes_flat)
-        file_name = [image_path.split(".")[0]] * num_predictions
-        # file_name = [image_path] * num_predictions
+        # file_name = [image_path.split(".")[0]] * num_predictions
+        file_name = [image_path] * num_predictions
 
 
         infer_df = pd.DataFrame({
@@ -293,24 +293,6 @@ def convert_hcfa_predictions_to_df(prediction, version = 'new'):
         
     return result_df_each_image
 
-# def plot_bounding_boxes(image, df, enable_title = False):
-#     image = image.permute(1,2,0)
-#     colors = ['red', 'blue', 'green', 'orange', 'purple', 'magenta', 'brown']
-#     fig, ax = plt.subplots(1, figsize=(50, 50))
-#     ax.set_aspect('auto')
-#     ax.imshow(image)
-#     for index, row in df.iterrows():
-#         class_name = row['class_name']
-#         x0, y0, x1, y1 = row['x0'], row['y0'], row['x1'], row['y1']
-#         box_color = random.choice(colors)
-#         rect = patches.Rectangle((x0, y0), x1 - x0, y1 - y0, linewidth=1.5, edgecolor=box_color, facecolor='none')
-#         ax.add_patch(rect)
-
-#         if enable_title:
-#             ax.text(x0, y0, class_name, color=box_color, fontsize=9, weight='bold')
-#     ax.axis('off')
-#     plt.show()
-
 def map_result1(dict1, dict2):
     result_dict_1 = {}
     for key, value in dict1.items():
@@ -358,41 +340,15 @@ def map_result1_final_output(result_dict_1, additional_info_dict, key_aggregated
 
     return updated_result_dict_1
 
-# def run_application(input_image_folder, output_ROI_folder, output_extraction_folder):
-#     root = os.getcwd()
-#     os.makedirs(output_ROI_folder, exist_ok=True)
-#     os.makedirs(output_extraction_folder, exist_ok=True)
-#     # image_list = os.listdir(os.path.join(root, input_image_folder))
-#     image_list = os.listdir(input_image_folder)
-#     for each_image in tqdm(image_list):
-#         image_path = os.path.join(input_image_folder, each_image)
-#         pil_image = Image.open(image_path).convert('RGB')
-#         to_tensor = transforms.ToTensor()
-#         image = to_tensor(pil_image)
-        
-#         print("Staring ROI extraction")
-#         # print(uploaded_file.)
-#         fasterrcnn_result_df = roi_model_inference(image_path, image)
-#         print("Staring data extraction")
-#         prediction, output = run_prediction_donut(image, model, processor)
-#         extraction_df = convert_predictions_to_df(prediction)
-
-#         output_ROI_path = os.path.join(root, output_ROI_folder,each_image.split(".")[0]+".xlsx" )
-#         fasterrcnn_result_df.to_excel(output_ROI_path, index=False)
-
-#         output_extraction_path = os.path.join(root, output_extraction_folder, each_image.split(".")[0]+".xlsx" )
-#         extraction_df.to_excel(output_extraction_path, index=False)
-
-
 # Load the models
 processor_1, model_1, processor_2, model_2 = load_model(device)
 
 
-def run_hcfa_pipeline(image_path: str):
+def run_hcfa_pipeline(content, image_path: str):
     try:
         # image_path = os.path.join(input_image_folder, each_image)
-        pil_image = Image.open(image_path).convert('RGB')
-        # pil_image = Image.open(io.BytesIO(image_path)).convert('RGB')
+        # pil_image = Image.open(image_path).convert('RGB')
+        pil_image = Image.open(io.BytesIO(content)).convert('RGB')
         to_tensor = transforms.ToTensor()
         image = to_tensor(pil_image)
 
@@ -498,7 +454,7 @@ def run_hcfa_pipeline(image_path: str):
 
         #### Apply Post processing ####
         final_mapping_dict = post_process(final_mapping_dict)
-        
+
         print(f"Length of Final Mapping Dict {final_mapping_dict}")
         return {"result": final_mapping_dict}, None
     except Exception as e:
