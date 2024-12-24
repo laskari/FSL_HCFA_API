@@ -101,7 +101,7 @@ class HCFARoiPredictor:
             predictions = self.model(image_tensor)
         return predictions
 
-    def predict_and_get_dataframe(self, image_path, image,  iou_thresh=0.5):
+    def predict_and_get_dataframe(self, image,  iou_thresh=0.5):
         predictions = self.predict_image(image)
         pred = predictions[0]
         pred_nms = self._apply_nms(pred, iou_thresh=iou_thresh)
@@ -117,13 +117,13 @@ class HCFARoiPredictor:
         scores_flat = pred_dict['scores'].reshape(-1)
 
         class_names = [self.category_mapping[label_id] for label_id in labels_flat]
-        num_predictions = len(boxes_flat)
+        # num_predictions = len(boxes_flat)
         # file_name = [image_path.split(".")[0]] * num_predictions
-        file_name = [image_path] * num_predictions
+        # file_name = [image_path] * num_predictions
 
 
         infer_df = pd.DataFrame({
-            'file_name': file_name,
+            # 'file_name': file_name,
             'x0': boxes_flat[:, 0],
             'y0': boxes_flat[:, 1],
             'x1': boxes_flat[:, 2],
@@ -140,8 +140,8 @@ class HCFARoiPredictor:
 frcnn_predictor = HCFARoiPredictor(MODEL_PATH)
 
 
-def roi_model_inference(image_path, image):
-    result_df = frcnn_predictor.predict_and_get_dataframe(image_path, image)
+def roi_model_inference(image):
+    result_df = frcnn_predictor.predict_and_get_dataframe(image)
     max_score_indices = result_df.groupby('class_name')['score'].idxmax()
     result_df = result_df.loc[max_score_indices]
     return result_df
@@ -344,7 +344,7 @@ def map_result1_final_output(result_dict_1, additional_info_dict, key_aggregated
 processor_1, model_1, processor_2, model_2 = load_model(device)
 
 
-def run_hcfa_pipeline(content, image_path: str):
+def run_hcfa_pipeline(content):
     try:
         # image_path = os.path.join(input_image_folder, each_image)
         # pil_image = Image.open(image_path).convert('RGB')
@@ -352,16 +352,6 @@ def run_hcfa_pipeline(content, image_path: str):
         to_tensor = transforms.ToTensor()
         image = to_tensor(pil_image)
 
-        """USE TWO MODEL TO HANDLE THE BLANK KEY 
-            - model_1 (old model)
-            - model_2 (new model)
-            - processor_1 (new processor)
-            - processor_2 (old processor)
-
-            convert_hcfa_predictions_to_df_old and
-            convert_hcfa_predictions_to_df_new
-
-        """
         prediction_old, output_old, scores_old = run_prediction_donut(pil_image, model_1, processor_1)
         donut_out_old = convert_hcfa_predictions_to_df(prediction_old, version = "old")
 
@@ -411,7 +401,7 @@ def run_hcfa_pipeline(content, image_path: str):
 
         print("Length of Keys being outputed", len(output_dict_donut.keys()))
         # This is just doing the ROI inference and converting DF to dict
-        res = roi_model_inference(image_path, image)
+        res = roi_model_inference(image)
         df_dict = res.to_dict(orient='records')
 
         # Implementing the average part here

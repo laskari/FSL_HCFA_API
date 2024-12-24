@@ -47,7 +47,7 @@ def grid_classifier(image_bytes: bytes, hcfa_classifier):
         raise e
 
 
-def run_final_hcfa_pipeline(content, file_name:str):
+def run_final_hcfa_pipeline(content: bytes = None, file_name: str = None):
     """
     The `run_final_hcfa_pipeline` function classifies an image as grid or non-grid and runs the
     corresponding pipeline for processing HCFA forms.
@@ -60,15 +60,24 @@ def run_final_hcfa_pipeline(content, file_name:str):
     :return: The `run_final_hcfa_pipeline` function returns the `result` and `error` variables.
     """
     try:
+
+        if not content and not file_name:
+            raise ValueError("Either content (image bytes) or file_name must be provided.")
+        
+        # Load content from file_name if not provided
+        if not content and file_name:
+            with open(file_name, "rb") as f:
+                content = f.read()
+        
         # Classiffy image into no_grid or grid
         predicted_label = grid_classifier(image_bytes=content, hcfa_classifier=hcfa_classifier)
 
         if predicted_label == 'grid':
            print("Running the Grid Pipeline")
-           result, error = run_hcfa_pipeline(content = content, image_path=file_name)
+           result, error = run_hcfa_pipeline(content = content)
         else:
            print("Running the Non Grid Pipeline")
-           result, error = run_hcfa_rd_pipeline(content = content, image_path=file_name)
+           result, error = run_hcfa_rd_pipeline(content = content)
         
         return result, error
     except Exception as e:
